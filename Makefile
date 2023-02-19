@@ -6,7 +6,7 @@
 #    By: kjimenez <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/29 11:53:31 by kjimenez          #+#    #+#              #
-#    Updated: 2023/02/19 17:38:55 by kjimenez         ###   ########.fr        #
+#    Updated: 2023/02/19 17:48:39 by kjimenez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ MKDIR		:= mkdir -p
 INIT_SUB	:= $(shell $(GIT) submodule init)
 UPDATE_SUB	:= $(shell $(GIT) submodule update)
 BUILD_MLX	:= $(shell $(MAKE) -C $(MLX_PATH))
-BUILD_LIBTT	:= $(shell $(MAKE) -C $(LIBFT_PATH))
+BUILD_LIBFT	:= $(shell $(MAKE) -C $(LIBFT_PATH))
 
 all: $(NAME)
 
