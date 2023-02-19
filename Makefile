@@ -6,7 +6,7 @@
 #    By: kjimenez <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/29 11:53:31 by kjimenez          #+#    #+#              #
-#    Updated: 2023/02/19 17:00:23 by kjimenez         ###   ########.fr        #
+#    Updated: 2023/02/19 17:38:55 by kjimenez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ SRC			:= fract_ol.c colors.c graphics.c fractals.c controls.c controls_keyboard.
 			fractals_burningship.c
 OBJ			:= $(addprefix $(DIR_OBJ)/,$(SRC:c=o))
 
-LIBS_PATH	:= ../libs
+LIBS_PATH	:= libs
 MLX_PATH	:= $(LIBS_PATH)/mlx_linux
 LIBFT_PATH	:= $(LIBS_PATH)/libft
 
@@ -33,8 +33,8 @@ GIT			:= git
 
 MKDIR		:= mkdir -p
 
-INIT_MLX	:= $(shell $(GIT) submodule init)
-UPDATE_MLX	:= $(shell $(GIT) submodule update)
+INIT_SUB	:= $(shell $(GIT) submodule init)
+UPDATE_SUB	:= $(shell $(GIT) submodule update)
 BUILD_MLX	:= $(shell $(MAKE) -C $(MLX_PATH))
 BUILD_LIBTT	:= $(shell $(MAKE) -C $(LIBFT_PATH))
 
