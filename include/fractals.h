@@ -6,7 +6,7 @@
 /*   By: kjimenez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 21:36:06 by kjimenez          #+#    #+#             */
-/*   Updated: 2023/02/17 17:03:11 by kjimenez         ###   ########.fr       */
+/*   Updated: 2023/02/20 14:47:54 by kjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ typedef enum e_fractal_type
 {
 	FR_MANDELBROT,
 	FR_JULIA,
-	FR_BURNINGSHIP,
-	FR_TRICORN
+	FR_TRICORN,
+	FR_BURNINGSHIP
 }			t_fractal_type;
 
 typedef struct s_complex_pos

@@ -6,7 +6,7 @@
 /*   By: kjimenez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 17:10:59 by kjimenez          #+#    #+#             */
-/*   Updated: 2023/02/17 18:33:47 by kjimenez         ###   ########.fr       */
+/*   Updated: 2023/02/20 15:12:54 by kjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	switch_palette(int keycode, t_vars *vars)
 	if (vars->palette_index == vars->palettes.palettes_count - 1)
 		vars->palette_index = 0;
 	else
-		vars->palette_index += 1;
+		vars->palette_index++;
 	return (1);
 }
 

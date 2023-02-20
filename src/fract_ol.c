@@ -6,7 +6,7 @@
 /*   By: kjimenez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:59:58 by kjimenez          #+#    #+#             */
-/*   Updated: 2023/02/17 18:38:33 by kjimenez         ###   ########.fr       */
+/*   Updated: 2023/02/20 15:11:08 by kjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "ft_string.h"
 #include "ft_stdio.h"
 
-void	init_graphics(t_fractal_type fractal_type)
+void	init(t_fractal_type fractal_type)
 {
 	t_vars			vars;
 
@@ -38,6 +38,7 @@ void	init_graphics(t_fractal_type fractal_type)
 	mlx_hook(vars.win, 17, 1L << 17, destroy, &vars);
 	mlx_key_hook(vars.win, handle_key_hooks, &vars);
 	plot_fractal(&vars);
+	print_help(&vars);
 	mlx_loop(vars.mlx);
 }
 
@@ -63,7 +64,7 @@ int	main(int argc, char *argv[])
 				": mandelbrot/julia/tricorn/burningship\n");
 			return (0);
 		}
-		init_graphics(fractal_type);
+		init(fractal_type);
 	}
 	ft_printf("Invalid args provided ! Please use : ./fract_ol <mandelbrot"
 		"/julia/tricorn/burningship>\n");

@@ -6,7 +6,7 @@
 /*   By: kjimenez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 17:25:38 by kjimenez          #+#    #+#             */
-/*   Updated: 2023/02/19 12:53:35 by kjimenez         ###   ########.fr       */
+/*   Updated: 2023/02/20 15:18:56 by kjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,24 @@
 # include "ft_stdio.h"
 # include "mlx.h"
 
+# ifndef RESET
+#  define RESET "\x1B[0m"
+# endif
+
+# ifndef BOLD
+#  define BOLD "\x1B[1m"
+# endif
+
+# ifndef UNDERLINE
+#  define UNDERLINE "\033[4m"
+# endif
+
 # ifndef WINDOW_HEIGHT
-#  define WINDOW_HEIGHT 1366
+#  define WINDOW_HEIGHT 960
 # endif
 
 # ifndef WINDOW_WIDTH
-#  define WINDOW_WIDTH 768
+#  define WINDOW_WIDTH 540
 # endif
 
 typedef struct s_data
@@ -51,6 +63,6 @@ typedef struct s_vars
 }				t_vars;
 
 void	plot_fractal(t_vars *vars);
-void	init_graphics(t_fractal_type fractal_type);
+void	print_help(t_vars *vars);
 
 #endif

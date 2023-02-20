@@ -6,7 +6,7 @@
 /*   By: kjimenez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 16:58:42 by kjimenez          #+#    #+#             */
-/*   Updated: 2023/02/17 17:16:04 by kjimenez         ###   ########.fr       */
+/*   Updated: 2023/02/20 15:17:52 by kjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,13 @@ int	handle_key_hooks(int keycode, t_vars *vars)
 {
 	if (keycode == KEY_CLOSE)
 		destroy(vars);
-	if (switch_fractal(keycode, vars)
-		|| switch_palette(keycode, vars)
-		|| reset_pos(keycode, vars)
+	if (switch_fractal(keycode, vars) || switch_palette(keycode, vars)
 		|| change_iteration(keycode, vars))
+	{
+		plot_fractal(vars);
+		print_help(vars);
+	}
+	else if (reset_pos(keycode, vars))
 		plot_fractal(vars);
 	return (0);
 }
