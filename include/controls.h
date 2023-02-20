@@ -6,7 +6,7 @@
 /*   By: kjimenez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 17:13:23 by kjimenez          #+#    #+#             */
-/*   Updated: 2023/02/20 16:47:20 by kjimenez         ###   ########.fr       */
+/*   Updated: 2023/02/20 19:10:22 by kjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,14 @@ enum e_key_map
 
 # ifndef MOVE_FACTOR
 #  define MOVE_FACTOR	0.1
+# endif
+
+# ifndef HUE_FACTOR
+#  define HUE_FACTOR	30
+# endif
+
+# ifndef JULIA_STEP
+#  define JULIA_STEP	0.2
 # endif
 
 int		handle_key_hooks(int keycode, t_vars *vars);

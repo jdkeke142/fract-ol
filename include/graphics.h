@@ -6,7 +6,7 @@
 /*   By: kjimenez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 17:25:38 by kjimenez          #+#    #+#             */
-/*   Updated: 2023/02/20 16:41:37 by kjimenez         ###   ########.fr       */
+/*   Updated: 2023/02/20 18:28:30 by kjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,10 @@
 #  define WINDOW_WIDTH 540
 # endif
 
+# ifndef SATURATION_MODIFIER
+#  define SATURATION_MODIFIER 0.3
+# endif
+
 typedef struct s_data
 {
 	void	*img;
@@ -54,11 +58,10 @@ typedef struct s_vars
 	void			*win;
 	t_fractal		fractal;
 	t_complex_pos	complex_pos;
-	t_palette_set	palettes;
 	t_data			img;
 	double			julia_const[2];
 	int				max_iteration;
-	int				palette_index;
+	int				color_hue;
 	int				mouse_pressed;
 	double			zoom_factor;
 }				t_vars;

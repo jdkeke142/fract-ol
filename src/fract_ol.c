@@ -6,7 +6,7 @@
 /*   By: kjimenez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:59:58 by kjimenez          #+#    #+#             */
-/*   Updated: 2023/02/20 17:58:04 by kjimenez         ###   ########.fr       */
+/*   Updated: 2023/02/20 19:07:55 by kjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,13 @@ void	init(t_fractal_type fractal_type)
 	vars.mouse_pressed = 0;
 	vars.julia_const[0] = 0.285;
 	vars.julia_const[1] = 0.01;
-	vars.max_iteration = 60;
+	vars.max_iteration = 50;
 	vars.img.img = mlx_new_image(vars.mlx, WINDOW_HEIGHT, WINDOW_WIDTH);
 	vars.img.addr = mlx_get_data_addr(vars.img.img, &vars.img.bits_per_pixel,
 			&vars.img.line_length, &vars.img.endian);
-	vars.palettes = init_palettes();
 	vars.fractal = get_fractal(fractal_type);
 	vars.complex_pos = vars.fractal.complex_pos;
-	vars.palette_index = 0;
+	vars.color_hue = HUE_FACTOR;
 	vars.zoom_factor = 1;
 	mlx_hook(vars.win, 4, 1L << 2, handle_mouse_hooks, &vars);
 	mlx_hook(vars.win, 5, 1L << 3, julia_const_disable, &vars);

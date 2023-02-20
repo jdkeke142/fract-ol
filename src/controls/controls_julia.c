@@ -6,7 +6,7 @@
 /*   By: kjimenez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 15:21:58 by kjimenez          #+#    #+#             */
-/*   Updated: 2023/02/20 15:00:53 by kjimenez         ###   ########.fr       */
+/*   Updated: 2023/02/20 19:10:31 by kjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	julia_const(int mouse_x, int mouse_y, t_vars *vars)
 	im_abs = vars->julia_const[1] - mouse_im;
 	if (im_abs < 0)
 		im_abs = -im_abs;
-	if (im_abs < 0.3 && re_abs < 0.3)
+	if (im_abs < JULIA_STEP && re_abs < JULIA_STEP)
 		return (0);
 	vars->julia_const[0] = mouse_re;
 	vars->julia_const[1] = mouse_im;

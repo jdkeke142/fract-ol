@@ -6,7 +6,7 @@
 /*   By: kjimenez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 20:30:45 by kjimenez          #+#    #+#             */
-/*   Updated: 2023/02/20 15:10:45 by kjimenez         ###   ########.fr       */
+/*   Updated: 2023/02/20 18:26:20 by kjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,4 @@ t_rgb	hsv_to_rgb(double h, double s, double v)
 	else if (i == 4)
 		return ((t_rgb){t * 255, p * 255, v * 255});
 	return ((t_rgb){v * 255, p * 255, q * 255});
-}
-
-t_palette_set	init_palettes(void)
-{
-	return ((t_palette_set){6, {(t_palette){60, 0.3}, (t_palette){120, 0.3},
-	(t_palette){180, 0.3}, (t_palette){240, 0.3}, (t_palette){300, 0.3},
-	(t_palette){360, 0.3}}});
 }

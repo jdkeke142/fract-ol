@@ -6,7 +6,7 @@
 /*   By: kjimenez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 17:10:59 by kjimenez          #+#    #+#             */
-/*   Updated: 2023/02/20 17:15:52 by kjimenez         ###   ########.fr       */
+/*   Updated: 2023/02/20 19:01:38 by kjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,10 @@ int	switch_palette(int keycode, t_vars *vars)
 {
 	if (keycode != KEY_SWITCH_PALETTE)
 		return (0);
-	if (vars->palette_index == vars->palettes.palettes_count - 1)
-		vars->palette_index = 0;
+	if (vars->color_hue == 360)
+		vars->color_hue = HUE_FACTOR;
 	else
-		vars->palette_index++;
+		vars->color_hue += HUE_FACTOR;
 	return (1);
 }
 

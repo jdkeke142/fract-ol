@@ -6,7 +6,7 @@
 /*   By: kjimenez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 17:25:36 by kjimenez          #+#    #+#             */
-/*   Updated: 2023/02/20 18:02:11 by kjimenez         ###   ########.fr       */
+/*   Updated: 2023/02/20 19:07:47 by kjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ void	plot_fractal_pixel(t_vars *vars, t_data *img, double x, double y)
 	double		hue;
 	double		saturation;
 	t_rgb		rgb_color;
-	t_palette	palette;
 
 	iteration_count = fractal_iteration(&vars->fractal, (double [2])
 		{vars->complex_pos.re_start + (x / WINDOW_HEIGHT)
@@ -34,14 +33,13 @@ void	plot_fractal_pixel(t_vars *vars, t_data *img, double x, double y)
 			vars->complex_pos.im_start + (y / WINDOW_WIDTH)
 			* (vars->complex_pos.im_end - vars->complex_pos.im_start)},
 			vars->julia_const, vars->max_iteration);
-	palette = vars->palettes.palettes[vars->palette_index];
 	if (iteration_count == 1)
 	{
 		my_mlx_pixel_put(img, x, y, create_trgb(0, 0, 0, 0));
 		return ;
 	}
-	hue = (iteration_count * 360) + palette.base_hue;
-	saturation = fmin(1, iteration_count + palette.saturation_modifier);
+	hue = (iteration_count * 360) + vars->color_hue;
+	saturation = fmin(1, iteration_count + SATURATION_MODIFIER);
 	rgb_color = hsv_to_rgb(hue, saturation, 1.0);
 	my_mlx_pixel_put(img, x, y,
 		create_trgb(0, rgb_color.r, rgb_color.g, rgb_color.b));
@@ -82,5 +80,5 @@ void	print_help(t_vars *vars)
 	ft_printf("%sCurrent fractal: %s\n", BOLD,
 		get_fractal_name(vars->fractal.type));
 	ft_printf("Current max iterations: %d\n", vars->max_iteration);
-	ft_printf("Current color palette: %d%s\n", vars->palette_index, RESET);
+	ft_printf("Current color hue: %d%s\n", vars->color_hue, RESET);
 }
