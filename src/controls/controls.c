@@ -6,7 +6,7 @@
 /*   By: kjimenez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 16:58:42 by kjimenez          #+#    #+#             */
-/*   Updated: 2023/02/20 23:32:50 by kjimenez         ###   ########.fr       */
+/*   Updated: 2023/02/20 23:39:59 by kjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,13 @@ int	handle_mouse_hooks(int keycode, int mouse_x, int mouse_y, t_vars *vars)
 {
 	if (julia_const_enable(keycode, mouse_x, mouse_y, vars)
 		|| zoom(keycode, mouse_x, mouse_y, vars)
-		|| recenter(keycode, mouse_x, mouse_y, vars)
-		|| reset_pos(keycode, mouse_x, mouse_y, vars))
+		|| recenter(keycode, mouse_x, mouse_y, vars))
 		plot_fractal(vars);
+	else if (reset_pos(keycode, mouse_x, mouse_y, vars))
+	{
+		plot_fractal(vars);
+		print_help(vars);
+	}
 	return (0);
 }
 
