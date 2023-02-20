@@ -6,7 +6,7 @@
 /*   By: kjimenez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:59:58 by kjimenez          #+#    #+#             */
-/*   Updated: 2023/02/20 23:36:25 by kjimenez         ###   ########.fr       */
+/*   Updated: 2023/02/20 23:45:59 by kjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ void	print_help(t_vars *vars)
 	ft_printf("%s%s\n\nControls%s\n", BOLD, UNDERLINE, RESET);
 	ft_printf("%sZoom up & down: Mouse up & mouse down\n", BOLD);
 	ft_printf("Recenter view: Left mouse somewhere in the window\n");
-	ft_printf("Move view: R key\n");
-	ft_printf("Rotate view: Arrows keys\n");
+	ft_printf("Move view: Arrows keys\n");
+	ft_printf("Rotate view: R key\n");
 	ft_printf("Reset view: Middle mouse\n");
 	ft_printf("Increase & decrease iteration: + and - keys\n");
 	ft_printf("Increase color hue: C key\n");
