@@ -6,7 +6,7 @@
 /*   By: kjimenez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 17:25:36 by kjimenez          #+#    #+#             */
-/*   Updated: 2023/02/20 19:07:47 by kjimenez         ###   ########.fr       */
+/*   Updated: 2023/02/20 19:13:16 by kjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	print_help(t_vars *vars)
 	ft_printf("Move view: Arrows keys\n");
 	ft_printf("Reset view: R key\n");
 	ft_printf("Increase & decrease iteration: + and - keys\n");
-	ft_printf("Rotate color palette: C key\n");
+	ft_printf("Increase color hue: C key\n");
 	ft_printf("Change fractal type: 1-4 keys\n");
 	ft_printf("Change julia constants: Hold Right Click\n");
 	ft_printf("\n%sInformations%s\n", UNDERLINE, RESET);
