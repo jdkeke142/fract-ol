@@ -6,7 +6,7 @@
 /*   By: kjimenez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 16:58:42 by kjimenez          #+#    #+#             */
-/*   Updated: 2023/02/20 15:17:52 by kjimenez         ###   ########.fr       */
+/*   Updated: 2023/02/20 17:16:02 by kjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int	julia_const(int mouse_x, int mouse_y, t_vars *vars);
 int	switch_fractal(int keycode, t_vars *vars);
 int	switch_palette(int keycode, t_vars *vars);
 int	reset_pos(int keycode, t_vars *vars);
+int	move_keyboard(int keycode, t_vars *vars);
 int	change_iteration(int keycode, t_vars *vars);
 int	zoom(int keycode, int mouse_x, int mouse_y, t_vars *vars);
 int	move(int keycode, int mouse_x, int mouse_y, t_vars *vars);
@@ -50,7 +51,7 @@ int	handle_key_hooks(int keycode, t_vars *vars)
 		plot_fractal(vars);
 		print_help(vars);
 	}
-	else if (reset_pos(keycode, vars))
+	else if (reset_pos(keycode, vars) || move_keyboard(keycode, vars))
 		plot_fractal(vars);
 	return (0);
 }

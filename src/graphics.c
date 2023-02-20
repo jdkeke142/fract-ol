@@ -6,7 +6,7 @@
 /*   By: kjimenez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 17:25:36 by kjimenez          #+#    #+#             */
-/*   Updated: 2023/02/20 15:11:27 by kjimenez         ###   ########.fr       */
+/*   Updated: 2023/02/20 18:02:11 by kjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,13 +72,15 @@ void	print_help(t_vars *vars)
 	ft_printf("%s%s\n\nControls%s\n", BOLD, UNDERLINE, RESET);
 	ft_printf("%sZoom up & down: Mouse up & mouse down\n", BOLD);
 	ft_printf("Recenter view: Left Click somewhere in the window\n");
+	ft_printf("Move view: Arrows keys\n");
 	ft_printf("Reset view: R key\n");
-	ft_printf("Increase & decrease iteration: Right and left arrows keys\n");
+	ft_printf("Increase & decrease iteration: + and - keys\n");
 	ft_printf("Rotate color palette: C key\n");
 	ft_printf("Change fractal type: 1-4 keys\n");
 	ft_printf("Change julia constants: Hold Right Click\n");
 	ft_printf("\n%sInformations%s\n", UNDERLINE, RESET);
-	ft_printf("%sCurrent fractal: %d\n", BOLD, vars->fractal.type);
+	ft_printf("%sCurrent fractal: %s\n", BOLD,
+		get_fractal_name(vars->fractal.type));
 	ft_printf("Current max iterations: %d\n", vars->max_iteration);
 	ft_printf("Current color palette: %d%s\n", vars->palette_index, RESET);
 }

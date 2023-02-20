@@ -6,7 +6,7 @@
 /*   By: kjimenez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 19:13:03 by kjimenez          #+#    #+#             */
-/*   Updated: 2023/02/20 14:18:26 by kjimenez         ###   ########.fr       */
+/*   Updated: 2023/02/20 18:04:25 by kjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,4 +69,15 @@ t_fractal	get_fractal(t_fractal_type fractal_type)
 	else
 		complex_pos = ((t_complex_pos){-2.5, 1.2, -1.2, 1.2});
 	return ((t_fractal){fractal_type, complex_pos});
+}
+
+char	*get_fractal_name(t_fractal_type fractal_type)
+{
+	if (fractal_type == FR_JULIA)
+		return ("Julia");
+	if (fractal_type == FR_TRICORN)
+		return ("Tricorn");
+	if (fractal_type == FR_BURNINGSHIP)
+		return ("Burning Ship");
+	return ("Mandelbrot");
 }

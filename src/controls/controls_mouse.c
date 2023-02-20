@@ -6,7 +6,7 @@
 /*   By: kjimenez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 23:25:00 by kjimenez          #+#    #+#             */
-/*   Updated: 2023/02/17 18:05:41 by kjimenez         ###   ########.fr       */
+/*   Updated: 2023/02/20 16:45:02 by kjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int	zoom(int keycode, int mouse_x, int mouse_y, t_vars *vars)
 	pos->im_start = interpolate(mouse_im, pos->im_start, interpolation);
 	pos->re_end = interpolate(mouse_re, pos->re_end, interpolation);
 	pos->im_end = interpolate(mouse_im, pos->im_end, interpolation);
+	vars->zoom_factor /= interpolation;
 	return (1);
 }
 

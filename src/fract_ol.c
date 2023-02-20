@@ -6,7 +6,7 @@
 /*   By: kjimenez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:59:58 by kjimenez          #+#    #+#             */
-/*   Updated: 2023/02/20 15:11:08 by kjimenez         ###   ########.fr       */
+/*   Updated: 2023/02/20 17:58:04 by kjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	init(t_fractal_type fractal_type)
 	vars.fractal = get_fractal(fractal_type);
 	vars.complex_pos = vars.fractal.complex_pos;
 	vars.palette_index = 0;
+	vars.zoom_factor = 1;
 	mlx_hook(vars.win, 4, 1L << 2, handle_mouse_hooks, &vars);
 	mlx_hook(vars.win, 5, 1L << 3, julia_const_disable, &vars);
 	mlx_hook(vars.win, 6, 1L << 6, julia_const, &vars);

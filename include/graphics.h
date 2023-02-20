@@ -6,7 +6,7 @@
 /*   By: kjimenez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 17:25:38 by kjimenez          #+#    #+#             */
-/*   Updated: 2023/02/20 15:18:56 by kjimenez         ###   ########.fr       */
+/*   Updated: 2023/02/20 16:41:37 by kjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ typedef struct s_vars
 	int				max_iteration;
 	int				palette_index;
 	int				mouse_pressed;
+	double			zoom_factor;
 }				t_vars;
 
 void	plot_fractal(t_vars *vars);

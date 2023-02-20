@@ -6,7 +6,7 @@
 /*   By: kjimenez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 21:36:06 by kjimenez          #+#    #+#             */
-/*   Updated: 2023/02/20 14:47:54 by kjimenez         ###   ########.fr       */
+/*   Updated: 2023/02/20 18:01:19 by kjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,6 @@ typedef struct s_fractal
 double		fractal_iteration(t_fractal *fractal, double pos[2],
 				double julia_const[2], int max_iteration);
 t_fractal	get_fractal(t_fractal_type fractal_type);
+char		*get_fractal_name(t_fractal_type fractal_type);
 
 #endif

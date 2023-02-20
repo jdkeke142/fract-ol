@@ -6,7 +6,7 @@
 /*   By: kjimenez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 17:13:23 by kjimenez          #+#    #+#             */
-/*   Updated: 2023/02/17 17:12:19 by kjimenez         ###   ########.fr       */
+/*   Updated: 2023/02/20 16:47:20 by kjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,12 @@
 
 enum e_key_map
 {
-	KEY_INCREASE_ITERATION = 65363,
-	KEY_DECREASE_ITERATION = 65361,
+	KEY_INCREASE_ITERATION = 61,
+	KEY_DECREASE_ITERATION = 45,
+	KEY_MOVE_UP = 65362,
+	KEY_MOVE_DOWN = 65364,
+	KEY_MOVE_RIGHT = 65363,
+	KEY_MOVE_LEFT = 65361,
 	KEY_SWITCH_PALETTE = 99,
 	KEY_FRACTAL_MANDELBROT = 49,
 	KEY_FRACTAL_JULIA = 50,
@@ -36,6 +40,10 @@ enum e_key_map
 
 # ifndef ZOOM_FACTOR
 #  define ZOOM_FACTOR	1.1
+# endif
+
+# ifndef MOVE_FACTOR
+#  define MOVE_FACTOR	0.1
 # endif
 
 int		handle_key_hooks(int keycode, t_vars *vars);
