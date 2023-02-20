@@ -6,11 +6,12 @@
 /*   By: kjimenez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 15:20:07 by kjimenez          #+#    #+#             */
-/*   Updated: 2023/02/17 16:30:24 by kjimenez         ###   ########.fr       */
+/*   Updated: 2023/02/20 22:24:28 by kjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractals.h"
+#include <math.h>
 
 int	burningship_iteration(double *x0, double *y0, int max_iteration)
 {

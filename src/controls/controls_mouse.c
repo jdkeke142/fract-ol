@@ -6,11 +6,13 @@
 /*   By: kjimenez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 23:25:00 by kjimenez          #+#    #+#             */
-/*   Updated: 2023/02/20 16:45:02 by kjimenez         ###   ########.fr       */
+/*   Updated: 2023/02/20 23:34:48 by kjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "controls.h"
+#include "graphics.h"
+#include "fractals.h"
 
 double	interpolate(double start, double end, double interpolation)
 {
@@ -24,7 +26,7 @@ int	zoom(int keycode, int mouse_x, int mouse_y, t_vars *vars)
 	double			mouse_im;
 	t_complex_pos	*pos;
 
-	if (keycode != MOUSE_DOWN && keycode != MOUSE_UP)
+	if (keycode != KEY_ZOOM_UP && keycode != KEY_ZOOM_DOWN)
 		return (0);
 	pos = &vars->complex_pos;
 	interpolation = 1;
@@ -32,9 +34,9 @@ int	zoom(int keycode, int mouse_x, int mouse_y, t_vars *vars)
 				- pos->re_start)) + pos->re_start;
 	mouse_im = mouse_y / (WINDOW_WIDTH / (pos->im_end
 				- pos->im_start)) + pos->im_start;
-	if (keycode == MOUSE_DOWN)
+	if (keycode == KEY_ZOOM_DOWN)
 		interpolation = 1.0 / ZOOM_FACTOR;
-	else if (keycode == MOUSE_UP)
+	else if (keycode == KEY_ZOOM_UP)
 		interpolation = ZOOM_FACTOR / 1.0;
 	pos->re_start = interpolate(mouse_re, pos->re_start, interpolation);
 	pos->im_start = interpolate(mouse_im, pos->im_start, interpolation);
@@ -44,7 +46,7 @@ int	zoom(int keycode, int mouse_x, int mouse_y, t_vars *vars)
 	return (1);
 }
 
-int	move(int keycode, int mouse_x, int mouse_y, t_vars *vars)
+int	recenter(int keycode, int mouse_x, int mouse_y, t_vars *vars)
 {
 	double			mouse_re;
 	double			mouse_im;
@@ -52,7 +54,7 @@ int	move(int keycode, int mouse_x, int mouse_y, t_vars *vars)
 	double			im_center;
 	t_complex_pos	*pos;
 
-	if (keycode != MOUSE_LEFT)
+	if (keycode != KEY_RECENTER)
 		return (0);
 	pos = &vars->complex_pos;
 	mouse_re = mouse_x / (WINDOW_HEIGHT / (pos->re_end
@@ -65,5 +67,17 @@ int	move(int keycode, int mouse_x, int mouse_y, t_vars *vars)
 	pos->re_end = pos->re_end + re_center;
 	pos->im_start = pos->im_start + im_center;
 	pos->im_end = pos->im_end + im_center;
+	return (1);
+}
+
+int	reset_pos(int keycode, int mouse_x, int mouse_y, t_vars *vars)
+{
+	(void) mouse_x;
+	(void) mouse_y;
+	if (keycode != KEY_RESET_POS)
+		return (0);
+	vars->complex_pos = get_fractal(vars->fractal.type).complex_pos;
+	vars->zoom_factor = ZOOM_FACTOR;
+	vars->angle = 0;
 	return (1);
 }

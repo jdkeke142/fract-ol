@@ -6,15 +6,15 @@
 /*   By: kjimenez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 19:13:03 by kjimenez          #+#    #+#             */
-/*   Updated: 2023/02/20 18:38:05 by kjimenez         ###   ########.fr       */
+/*   Updated: 2023/02/20 23:26:58 by kjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractals.h"
+#include <math.h>
 
 int	mandelbrot_iteration(double *x0, double *y0, int max_iteration);
-int	julia_iteration(double *x0_ptr, double *y0_ptr, double julia_const[2],
-		int max_iteration);
+int	julia_iteration(double *x0_ptr, double *y0_ptr, t_vars *vars);
 int	tricorn_iteration(double *x0, double *y0, int max_iteration);
 int	burningship_iteration(double *x0, double *y0, int max_iteration);
 
@@ -33,27 +33,27 @@ double	fractal_stability(double normalized_i, int max_iteration)
 	return (fmax(0.0, fmin(value, 1.0)));
 }
 
-double	fractal_iteration(t_fractal *fractal, double pos[2],
-	double julia_const[2], int max_iteration)
+double	fractal_iteration(t_vars *vars, double x, double y)
 {
 	int		i;
-	double	julia_re;
-	double	julia_im;
+	double	radians;
+	double	x_temp;
 
 	i = 0;
-	julia_re = julia_const[0];
-	julia_im = julia_const[1];
-	if (fractal->type == FR_JULIA)
-		i = julia_iteration(&pos[0], &pos[1], (double [2]){julia_re, julia_im},
-				max_iteration);
-	else if (fractal->type == FR_TRICORN)
-		i = tricorn_iteration(&pos[0], &pos[1], max_iteration);
-	else if (fractal->type == FR_BURNINGSHIP)
-		i = burningship_iteration(&pos[0], &pos[1], max_iteration);
+	radians = vars->angle * (M_PI / 180);
+	x_temp = x * cos(radians) - y * sin(radians);
+	y = x * sin(radians) + y * cos(radians);
+	x = x_temp;
+	if (vars->fractal.type == FR_JULIA)
+		i = julia_iteration(&x, &y, vars);
+	else if (vars->fractal.type == FR_TRICORN)
+		i = tricorn_iteration(&x, &y, vars->max_iteration);
+	else if (vars->fractal.type == FR_BURNINGSHIP)
+		i = burningship_iteration(&x, &y, vars->max_iteration);
 	else
-		i = mandelbrot_iteration(&pos[0], &pos[1], max_iteration);
-	return (fractal_stability(normalize_iterations(pos[0], pos[1], i,
-				max_iteration), max_iteration));
+		i = mandelbrot_iteration(&x, &y, vars->max_iteration);
+	return (fractal_stability(normalize_iterations(x, y, i,
+				vars->max_iteration), vars->max_iteration));
 }
 
 t_fractal	get_fractal(t_fractal_type fractal_type)

@@ -6,11 +6,16 @@
 /*   By: kjimenez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 15:21:58 by kjimenez          #+#    #+#             */
-/*   Updated: 2023/02/20 19:10:31 by kjimenez         ###   ########.fr       */
+/*   Updated: 2023/02/20 23:08:50 by kjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "controls.h"
+#include "graphics.h"
+
+#ifndef JULIA_STEP
+# define JULIA_STEP	0.2
+#endif
 
 int	julia_const_enable(int keycode, int mouse_x, int mouse_y, t_vars *vars)
 {
@@ -18,7 +23,7 @@ int	julia_const_enable(int keycode, int mouse_x, int mouse_y, t_vars *vars)
 	double			mouse_im;
 	t_complex_pos	*pos;
 
-	if (vars->fractal.type != FR_JULIA || keycode != MOUSE_RIGHT)
+	if (vars->fractal.type != FR_JULIA || keycode != KEY_JULIA_CONST)
 		return (0);
 	pos = &vars->complex_pos;
 	vars->mouse_pressed = 1;
@@ -26,8 +31,8 @@ int	julia_const_enable(int keycode, int mouse_x, int mouse_y, t_vars *vars)
 				- pos->re_start)) + pos->re_start;
 	mouse_im = mouse_y / (WINDOW_WIDTH / (pos->im_end
 				- pos->im_start)) + pos->im_start;
-	vars->julia_const[0] = mouse_re;
-	vars->julia_const[1] = mouse_im;
+	vars->julia_re = mouse_re;
+	vars->julia_im = mouse_im;
 	return (1);
 }
 
@@ -35,7 +40,7 @@ int	julia_const_disable(int keycode, int mouse_x, int mouse_y, t_vars *vars)
 {
 	(void) mouse_x;
 	(void) mouse_y;
-	if (vars->fractal.type != FR_JULIA || keycode != MOUSE_RIGHT)
+	if (vars->fractal.type != FR_JULIA || keycode != KEY_JULIA_CONST)
 		return (0);
 	vars->mouse_pressed = 0;
 	return (0);
@@ -56,16 +61,16 @@ int	julia_const(int mouse_x, int mouse_y, t_vars *vars)
 				- pos->re_start)) + pos->re_start;
 	mouse_im = mouse_y / (WINDOW_WIDTH / (pos->im_end
 				- pos->im_start)) + pos->im_start;
-	re_abs = vars->julia_const[0] - mouse_re;
+	re_abs = vars->julia_re - mouse_re;
 	if (re_abs < 0)
 		re_abs = -re_abs;
-	im_abs = vars->julia_const[1] - mouse_im;
+	im_abs = vars->julia_im - mouse_im;
 	if (im_abs < 0)
 		im_abs = -im_abs;
 	if (im_abs < JULIA_STEP && re_abs < JULIA_STEP)
 		return (0);
-	vars->julia_const[0] = mouse_re;
-	vars->julia_const[1] = mouse_im;
+	vars->julia_re = mouse_re;
+	vars->julia_im = mouse_im;
 	plot_fractal(vars);
 	return (0);
 }

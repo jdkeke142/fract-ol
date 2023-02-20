@@ -6,14 +6,12 @@
 /*   By: kjimenez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 01:54:49 by kjimenez          #+#    #+#             */
-/*   Updated: 2023/02/20 18:26:13 by kjimenez         ###   ########.fr       */
+/*   Updated: 2023/02/20 21:46:58 by kjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef COLORS_H
 # define COLORS_H
-
-# include <math.h>
 
 typedef struct s_rgb {
 	int	r;

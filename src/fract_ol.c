@@ -6,13 +6,38 @@
 /*   By: kjimenez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:59:58 by kjimenez          #+#    #+#             */
-/*   Updated: 2023/02/20 19:07:55 by kjimenez         ###   ########.fr       */
+/*   Updated: 2023/02/20 23:36:25 by kjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "fract_ol.h"
+#include "graphics.h"
 #include "controls.h"
 #include "ft_string.h"
 #include "ft_stdio.h"
+#include "fractals.h"
+#include "mlx.h"
+
+void	print_help(t_vars *vars)
+{
+	ft_printf("\e[1;1H\e[2J");
+	ft_printf("%s%s\n\nControls%s\n", BOLD, UNDERLINE, RESET);
+	ft_printf("%sZoom up & down: Mouse up & mouse down\n", BOLD);
+	ft_printf("Recenter view: Left mouse somewhere in the window\n");
+	ft_printf("Move view: R key\n");
+	ft_printf("Rotate view: Arrows keys\n");
+	ft_printf("Reset view: Middle mouse\n");
+	ft_printf("Increase & decrease iteration: + and - keys\n");
+	ft_printf("Increase color hue: C key\n");
+	ft_printf("Change fractal type: 1-4 keys\n");
+	ft_printf("Change julia constants: Hold Right mouse\n");
+	ft_printf("\n%sInformations%s\n", UNDERLINE, RESET);
+	ft_printf("%sCurrent fractal: %s\n", BOLD,
+		get_fractal_name(vars->fractal.type));
+	ft_printf("Current max iterations: %d\n", vars->max_iteration);
+	ft_printf("Current angle: %d\n", vars->angle);
+	ft_printf("Current color hue: %d%s\n", vars->color_hue, RESET);
+}
 
 void	init(t_fractal_type fractal_type)
 {
@@ -22,9 +47,10 @@ void	init(t_fractal_type fractal_type)
 	vars.win = mlx_new_window(vars.mlx, WINDOW_HEIGHT, WINDOW_WIDTH,
 			"Fract'ol");
 	vars.mouse_pressed = 0;
-	vars.julia_const[0] = 0.285;
-	vars.julia_const[1] = 0.01;
+	vars.julia_re = 0.285;
+	vars.julia_im = 0.01;
 	vars.max_iteration = 50;
+	vars.angle = 0;
 	vars.img.img = mlx_new_image(vars.mlx, WINDOW_HEIGHT, WINDOW_WIDTH);
 	vars.img.addr = mlx_get_data_addr(vars.img.img, &vars.img.bits_per_pixel,
 			&vars.img.line_length, &vars.img.endian);

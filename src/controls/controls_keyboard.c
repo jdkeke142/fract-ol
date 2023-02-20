@@ -6,11 +6,36 @@
 /*   By: kjimenez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 17:10:59 by kjimenez          #+#    #+#             */
-/*   Updated: 2023/02/20 19:01:38 by kjimenez         ###   ########.fr       */
+/*   Updated: 2023/02/20 23:37:01 by kjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "controls.h"
+#include "fractals.h"
+
+#ifndef ITERATION_STEP
+# define ITERATION_STEP	5
+#endif
+
+#ifndef MOVE_STEP
+# define MOVE_STEP	0.1
+#endif
+
+#ifndef ANGLE_STEP
+# define ANGLE_STEP	10
+#endif
+
+#ifndef ANGLE_MAX
+# define ANGLE_MAX 360
+#endif
+
+#ifndef ITERATION_MIN
+# define ITERATION_MIN	15
+#endif
+
+#ifndef ITERATION_MAX
+# define ITERATION_MAX	150
+#endif
 
 int	switch_fractal(int keycode, t_vars *vars)
 {
@@ -30,6 +55,7 @@ int	switch_fractal(int keycode, t_vars *vars)
 	vars->fractal = get_fractal(fractal_type);
 	vars->complex_pos = vars->fractal.complex_pos;
 	vars->zoom_factor = ZOOM_FACTOR;
+	vars->angle = 0;
 	return (1);
 }
 
@@ -41,15 +67,6 @@ int	switch_palette(int keycode, t_vars *vars)
 		vars->color_hue = HUE_FACTOR;
 	else
 		vars->color_hue += HUE_FACTOR;
-	return (1);
-}
-
-int	reset_pos(int keycode, t_vars *vars)
-{
-	if (keycode != KEY_RESET_POS)
-		return (0);
-	vars->complex_pos = get_fractal(vars->fractal.type).complex_pos;
-	vars->zoom_factor = ZOOM_FACTOR;
 	return (1);
 }
 
@@ -72,14 +89,14 @@ int	change_iteration(int keycode, t_vars *vars)
 	return (1);
 }
 
-int	move_keyboard(int keycode, t_vars *vars)
+int	move(int keycode, t_vars *vars)
 {
 	double	move_factor;
 
 	if (keycode != KEY_MOVE_UP && keycode != KEY_MOVE_DOWN
 		&& keycode != KEY_MOVE_RIGHT && keycode != KEY_MOVE_LEFT)
 		return (0);
-	move_factor = MOVE_FACTOR / vars->zoom_factor;
+	move_factor = MOVE_STEP / vars->zoom_factor;
 	if (keycode == KEY_MOVE_LEFT || keycode == KEY_MOVE_UP)
 		move_factor = -move_factor;
 	if (keycode == KEY_MOVE_UP || keycode == KEY_MOVE_DOWN)
@@ -92,5 +109,15 @@ int	move_keyboard(int keycode, t_vars *vars)
 		vars->complex_pos.re_start += move_factor;
 		vars->complex_pos.re_end += move_factor;
 	}
+	return (1);
+}
+
+int	rotate(int keycode, t_vars *vars)
+{
+	if (keycode != KEY_ROTATE)
+		return (0);
+	if (vars->angle == ANGLE_MAX)
+		vars->angle = 0;
+	vars->angle += ANGLE_STEP;
 	return (1);
 }

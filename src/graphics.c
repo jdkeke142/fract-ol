@@ -6,11 +6,19 @@
 /*   By: kjimenez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 17:25:36 by kjimenez          #+#    #+#             */
-/*   Updated: 2023/02/20 19:13:16 by kjimenez         ###   ########.fr       */
+/*   Updated: 2023/02/20 22:52:41 by kjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "graphics.h"
+#include "colors.h"
+#include "fractals.h"
+#include "mlx.h"
+#include <math.h>
+
+#ifndef SATURATION_MODIFIER
+# define SATURATION_MODIFIER 0.3
+#endif
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
@@ -27,12 +35,11 @@ void	plot_fractal_pixel(t_vars *vars, t_data *img, double x, double y)
 	double		saturation;
 	t_rgb		rgb_color;
 
-	iteration_count = fractal_iteration(&vars->fractal, (double [2])
-		{vars->complex_pos.re_start + (x / WINDOW_HEIGHT)
+	iteration_count = fractal_iteration(vars,
+			vars->complex_pos.re_start + (x / WINDOW_HEIGHT)
 			* (vars->complex_pos.re_end - vars->complex_pos.re_start),
 			vars->complex_pos.im_start + (y / WINDOW_WIDTH)
-			* (vars->complex_pos.im_end - vars->complex_pos.im_start)},
-			vars->julia_const, vars->max_iteration);
+			* (vars->complex_pos.im_end - vars->complex_pos.im_start));
 	if (iteration_count == 1)
 	{
 		my_mlx_pixel_put(img, x, y, create_trgb(0, 0, 0, 0));
@@ -62,23 +69,4 @@ void	plot_fractal(t_vars *vars)
 		x++;
 	}
 	mlx_put_image_to_window(vars->mlx, vars->win, vars->img.img, 0, 0);
-}
-
-void	print_help(t_vars *vars)
-{
-	ft_printf("\e[1;1H\e[2J");
-	ft_printf("%s%s\n\nControls%s\n", BOLD, UNDERLINE, RESET);
-	ft_printf("%sZoom up & down: Mouse up & mouse down\n", BOLD);
-	ft_printf("Recenter view: Left Click somewhere in the window\n");
-	ft_printf("Move view: Arrows keys\n");
-	ft_printf("Reset view: R key\n");
-	ft_printf("Increase & decrease iteration: + and - keys\n");
-	ft_printf("Increase color hue: C key\n");
-	ft_printf("Change fractal type: 1-4 keys\n");
-	ft_printf("Change julia constants: Hold Right Click\n");
-	ft_printf("\n%sInformations%s\n", UNDERLINE, RESET);
-	ft_printf("%sCurrent fractal: %s\n", BOLD,
-		get_fractal_name(vars->fractal.type));
-	ft_printf("Current max iterations: %d\n", vars->max_iteration);
-	ft_printf("Current color hue: %d%s\n", vars->color_hue, RESET);
 }

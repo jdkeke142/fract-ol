@@ -6,21 +6,24 @@
 /*   By: kjimenez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 17:13:23 by kjimenez          #+#    #+#             */
-/*   Updated: 2023/02/20 19:10:22 by kjimenez         ###   ########.fr       */
+/*   Updated: 2023/02/20 23:28:33 by kjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CONTROLS_H
 # define CONTROLS_H
 
-# include "graphics.h"
-# include "fractals.h"
-# include <stdlib.h>
+# include "fract_ol.h"
+
+# ifndef HUE_FACTOR
+#  define HUE_FACTOR	30
+# endif
 
 enum e_key_map
 {
 	KEY_INCREASE_ITERATION = 61,
 	KEY_DECREASE_ITERATION = 45,
+	KEY_ROTATE = 114,
 	KEY_MOVE_UP = 65362,
 	KEY_MOVE_DOWN = 65364,
 	KEY_MOVE_RIGHT = 65363,
@@ -30,28 +33,16 @@ enum e_key_map
 	KEY_FRACTAL_JULIA = 50,
 	KEY_FRACTAL_TRICORN = 51,
 	KEY_FRACTAL_BURNINGSHIP = 52,
-	KEY_RESET_POS = 114,
 	KEY_CLOSE = 65307,
-	MOUSE_LEFT = 1,
-	MOUSE_RIGHT = 3,
-	MOUSE_DOWN = 4,
-	MOUSE_UP = 5
+	KEY_RECENTER = 1,
+	KEY_RESET_POS = 2,
+	KEY_JULIA_CONST = 3,
+	KEY_ZOOM_DOWN = 4,
+	KEY_ZOOM_UP = 5
 };
 
 # ifndef ZOOM_FACTOR
 #  define ZOOM_FACTOR	1.1
-# endif
-
-# ifndef MOVE_FACTOR
-#  define MOVE_FACTOR	0.1
-# endif
-
-# ifndef HUE_FACTOR
-#  define HUE_FACTOR	30
-# endif
-
-# ifndef JULIA_STEP
-#  define JULIA_STEP	0.2
 # endif
 
 int		handle_key_hooks(int keycode, t_vars *vars);
