@@ -6,7 +6,7 @@
 /*   By: kjimenez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 17:13:23 by kjimenez          #+#    #+#             */
-/*   Updated: 2023/02/20 23:28:33 by kjimenez         ###   ########.fr       */
+/*   Updated: 2023/02/22 12:57:58 by kjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ enum e_key_map
 {
 	KEY_INCREASE_ITERATION = 61,
 	KEY_DECREASE_ITERATION = 45,
-	KEY_ROTATE = 114,
+	KEY_ROTATE_RIGHT = 114,
+	KEY_ROTATE_LEFT = 108,
 	KEY_MOVE_UP = 65362,
 	KEY_MOVE_DOWN = 65364,
 	KEY_MOVE_RIGHT = 65363,

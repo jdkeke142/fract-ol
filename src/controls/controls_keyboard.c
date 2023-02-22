@@ -6,7 +6,7 @@
 /*   By: kjimenez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 17:10:59 by kjimenez          #+#    #+#             */
-/*   Updated: 2023/02/20 23:37:01 by kjimenez         ###   ########.fr       */
+/*   Updated: 2023/02/22 13:02:40 by kjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,6 @@
 
 #ifndef ANGLE_STEP
 # define ANGLE_STEP	10
-#endif
-
-#ifndef ANGLE_MAX
-# define ANGLE_MAX 360
 #endif
 
 #ifndef ITERATION_MIN
@@ -114,10 +110,21 @@ int	move(int keycode, t_vars *vars)
 
 int	rotate(int keycode, t_vars *vars)
 {
-	if (keycode != KEY_ROTATE)
+	if (keycode != KEY_ROTATE_RIGHT
+		&& keycode != KEY_ROTATE_LEFT)
 		return (0);
-	if (vars->angle == ANGLE_MAX)
-		vars->angle = 0;
-	vars->angle += ANGLE_STEP;
+	if (keycode == KEY_ROTATE_RIGHT)
+	{
+		if (vars->angle + ANGLE_STEP >= 360)
+			vars->angle = 0;
+		else
+			vars->angle += ANGLE_STEP;
+	}
+	else if (keycode == KEY_ROTATE_LEFT)
+	{
+		if (vars->angle == 0)
+			vars->angle = 360;
+		vars->angle -= ANGLE_STEP;
+	}
 	return (1);
 }
