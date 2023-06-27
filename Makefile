@@ -6,7 +6,7 @@
 #    By: kjimenez <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/29 11:53:31 by kjimenez          #+#    #+#              #
-#    Updated: 2023/02/19 17:48:39 by kjimenez         ###   ########.fr        #
+#    Updated: 2023/06/27 18:47:47 by kjimenez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,6 +40,8 @@ BUILD_LIBFT	:= $(shell $(MAKE) -C $(LIBFT_PATH))
 
 all: $(NAME)
 
+fractol: $(NAME)
+
 $(NAME): $(OBJ)
 	$(CC) $(OBJ) $(LDFLAGS) -o $(NAME)
 
@@ -55,6 +57,6 @@ fclean: clean
 
 re: fclean $(NAME)
 
-.PHONY: all clean fclean re
+.PHONY: all fractol clean fclean re
 
 vpath %.c src:src/controls:src/fractals

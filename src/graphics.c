@@ -6,7 +6,7 @@
 /*   By: kjimenez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 17:25:36 by kjimenez          #+#    #+#             */
-/*   Updated: 2023/02/20 22:52:41 by kjimenez         ###   ########.fr       */
+/*   Updated: 2023/06/27 18:50:53 by kjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # define SATURATION_MODIFIER 0.3
 #endif
 
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
+static void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
 	char	*dst;
 
@@ -28,7 +28,7 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-void	plot_fractal_pixel(t_vars *vars, t_data *img, double x, double y)
+static void	plot_fractal_pixel(t_vars *vars, t_data *img, double x, double y)
 {
 	double		iteration_count;
 	double		hue;

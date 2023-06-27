@@ -6,7 +6,7 @@
 /*   By: kjimenez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:59:58 by kjimenez          #+#    #+#             */
-/*   Updated: 2023/02/22 13:03:11 by kjimenez         ###   ########.fr       */
+/*   Updated: 2023/06/27 19:02:46 by kjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	print_help(t_vars *vars)
 	ft_printf("Current color hue: %d%s\n", vars->color_hue, RESET);
 }
 
-void	init(t_fractal_type fractal_type)
+static void	init(t_fractal_type fractal_type)
 {
 	t_vars			vars;
 

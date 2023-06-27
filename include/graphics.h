@@ -6,7 +6,7 @@
 /*   By: kjimenez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 17:25:38 by kjimenez          #+#    #+#             */
-/*   Updated: 2023/02/20 22:21:10 by kjimenez         ###   ########.fr       */
+/*   Updated: 2023/06/27 18:51:07 by kjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,5 @@
 # endif
 
 void	plot_fractal(t_vars *vars);
-void	print_help(t_vars *vars);
 
 #endif

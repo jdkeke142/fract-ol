@@ -6,7 +6,7 @@
 /*   By: kjimenez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 19:13:03 by kjimenez          #+#    #+#             */
-/*   Updated: 2023/02/20 23:26:58 by kjimenez         ###   ########.fr       */
+/*   Updated: 2023/06/27 18:52:33 by kjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,15 @@ int	julia_iteration(double *x0_ptr, double *y0_ptr, t_vars *vars);
 int	tricorn_iteration(double *x0, double *y0, int max_iteration);
 int	burningship_iteration(double *x0, double *y0, int max_iteration);
 
-double	normalize_iterations(double x, double y, double i, int max_iteration)
+static double	normalize_iterations(double x, double y, double i,
+	int max_iteration)
 {
 	if (i < max_iteration)
 		i = i + 1 - (log((log(x * x + y * y) / 2) / log(2)) / log(2));
 	return (i);
 }
 
-double	fractal_stability(double normalized_i, int max_iteration)
+static double	fractal_stability(double normalized_i, int max_iteration)
 {
 	double	value;
 
